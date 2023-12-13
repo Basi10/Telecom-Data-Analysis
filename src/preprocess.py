@@ -63,4 +63,5 @@ class PreProcess:
         numeric_columns = self.data.select_dtypes(include=['float64', 'number']).columns
         z_scores = np.abs(stats.zscore(self.data[numeric_columns]))
         filtered_data = self.data[(z_scores < 3).all(axis=1)]
+        self.data = filtered_data
         return filtered_data
