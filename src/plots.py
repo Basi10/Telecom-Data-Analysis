@@ -96,8 +96,9 @@ class Plot:
             labels (list): labels of the data.
             colors (list): colors of the data.
         """
+        plt.style.context('seaborn-pastel')
         plt.figure(figsize=(8, 8))
-        plt.pie(x=data, labels=label, autopct='%1.1f%%', startangle=140, colors=sns.color_palette("Set3"))
+        plt.pie(x=data, labels=label, autopct='%1.1f%%', startangle=140)
 
         plt.title(title)
         plt.show()
