@@ -88,7 +88,7 @@ class Plot:
         plt.yticks(fontsize=14)
         plt.show()
 
-    def plot_pie(self, data, title) -> None:
+    def plot_pie(self, data, title, label) -> None:
         """Plot pie chart of the data.
 
         Args:
@@ -97,7 +97,7 @@ class Plot:
             colors (list): colors of the data.
         """
         plt.figure(figsize=(8, 8))
-        plt.pie(x=data, labels=data.index, autopct='%1.1f%%', startangle=140, colors=sns.color_palette("Set3"))
+        plt.pie(x=data, labels=label, autopct='%1.1f%%', startangle=140, colors=sns.color_palette("Set3"))
 
         plt.title(title)
         plt.show()

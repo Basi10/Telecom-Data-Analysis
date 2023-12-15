@@ -90,8 +90,8 @@ class Outlier:
         """
 
         # calculate upper and lower limits
-        upper_limit = df[col].mean() + 3 * df['Total UL (Bytes)'].std()
-        lower_limit = df[col].mean() - 3 * df['Total UL (Bytes)'].std()
+        upper_limit = df[col].mean() + 3 * df['total_ul_(bytes)'].std()
+        lower_limit = df[col].mean() - 3 * df['total_ul_(bytes)'].std()
 
         # select outliers
         return df[~((df[col] < upper_limit) & (df[col] > lower_limit))]
