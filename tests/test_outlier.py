@@ -1,7 +1,13 @@
 # test_outlier.py
+import os
+import sys
 import unittest
 import pandas as pd
 import numpy as np
+
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, project_root)
+
 from src.outlier import Outlier  # Replace 'your_module' with the actual name of your module
 
 class TestOutlier(unittest.TestCase):
