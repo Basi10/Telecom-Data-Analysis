@@ -62,25 +62,28 @@ class Outlier:
 
         Args:
             df (pd.DataFrame): a dataframe to be analyzed
+            cols (list): list of columns to analyze
         """
-        # calculate skewness
-
         outliersTot = {}
+
         for col in cols:
             outliers = []
-            df[col] = sorted(df[col])
-            q1 = np.percentile(df[col], 25)
-            q3 = np.percentile(df[col], 75)
-            # print(q1, q3)
-            IQR = q3-q1
-            lwr_bound = q1-(1.5*IQR)
-            upr_bound = q3+(1.5*IQR)
-            # print(lwr_bound, upr_bound)
-            for i in df[col]:
+            df_sorted = df.sort_values(col)[col]
+            q1 = np.percentile(df_sorted, 25)
+            q3 = np.percentile(df_sorted, 75)
+
+            IQR = q3 - q1
+            lwr_bound = q1 - (1.5 * IQR)
+            upr_bound = q3 + (1.5 * IQR)
+
+            for i in df_sorted:
                 if (i < lwr_bound or i > upr_bound):
                     outliers.append(i)
-            outliers[col] = len(outliers)
-        return outliersTot  # Driver code
+
+            outliersTot[col] = outliers
+
+        return outliersTot
+
 
     def outlier_overview(self, df, col):
         """Get outlier overview.
